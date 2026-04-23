@@ -46,3 +46,6 @@ dist
 .github/prompts/*.local.prompt.md
 .agents/skills/.local/
 .github/skills/.local/
+
+# Local Modurian marketing + API (not versioned; deploy separately to modurian.com)
+/modurian-website/
