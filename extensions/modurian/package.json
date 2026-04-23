@@ -1,0 +1,87 @@
+{
+	"name": "modurian",
+	"displayName": "Modurian",
+	"description": "Modurian backend connection and agent entry point.",
+	"version": "0.0.1",
+	"publisher": "modurian",
+	"license": "MIT",
+	"engines": {
+		"vscode": "^1.82.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"extensionKind": [
+		"ui"
+	],
+	"activationEvents": [
+		"onView:modurian.sidebar"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"configuration": {
+			"title": "Modurian",
+			"properties": {
+				"modurian.apiUrl": {
+					"type": "string",
+					"default": "https://modurian.com",
+					"description": "Base URL for Modurian APIs (no trailing slash required)."
+				}
+			}
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "modurian",
+					"title": "Modurian",
+					"icon": "$(sparkle)"
+				}
+			]
+		},
+		"views": {
+			"modurian": [
+				{
+					"id": "modurian.sidebar",
+					"name": "Agent",
+					"contextualTitle": "Modurian"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "modurian.ping",
+				"title": "Ping Modurian API",
+				"category": "Modurian",
+				"icon": "$(radio-tower)"
+			},
+			{
+				"command": "modurian.refresh",
+				"title": "Refresh",
+				"category": "Modurian",
+				"icon": "$(refresh)"
+			}
+		],
+		"menus": {
+			"view/title": [
+				{
+					"command": "modurian.ping",
+					"when": "view == modurian.sidebar",
+					"group": "navigation"
+				},
+				{
+					"command": "modurian.refresh",
+					"when": "view == modurian.sidebar",
+					"group": "navigation"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"compile": "gulp compile-extension:modurian",
+		"watch": "gulp watch-extension:modurian"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/microsoft/vscode.git"
+	}
+}
